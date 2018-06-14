@@ -15,7 +15,7 @@ def subnet_calc():
 	
 	try:
 		print ("\n")
-		
+		# Check for IP Validity
 		while True:
 
 			ip_address=raw_input("Enter an IP address:")
@@ -26,6 +26,25 @@ def subnet_calc():
 				break
 			else:
 				print("\n The IP address is INVALID !! Please try again ")
+                                continue
+
+
+
+		#Check for Subnet Validity
+		while True:
+			
+			subnet_mask=raw_input("Enter a subnet mask:")
+			matched=re.match(r'^(25[5|4|2]|24[8|0]|224|192|128|0])\.(25[5|4|2]|24[8|0]|224|192|128|0)\.(25[5|4|2]|24[8|0]|224|192|128|0)\.(25[5|4|2]|24[8|0]|224|192|128|0)$',subnet_mask)
+                      
+			if (matched): 
+				if(int(matched.group(1))>=int(matched.group(2))>=int(matched.group(3))>=int(matched.group(4))):
+					break
+				else:
+					print("\n The Subnet mask is INVALID !! Please try again")
+					continue
+			else:
+				print("\n The Subnet mask is INVALID !! Please try again")
+                          	continue
 
 
 	except SyntaxError:
