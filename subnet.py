@@ -67,7 +67,28 @@ def subnet_calc():
 		#print mask_octate_padded
 
 		binary_mask="".join(mask_octate_padded)
-		print binary_mask  # Example : for 255.255.255.0 binary_mask => 11111111111111111111111100000000
+		#print binary_mask  # Example : for 255.255.255.0 binary_mask => 11111111111111111111111100000000
+                
+                #count the number of ones in the binary
+		ones=binary_mask.count("1")
+                zeros= 32-ones
+
+                #Calculate the number of hosts 
+                hosts=(2**zeros)-2
+
+		#Calculate the Wildcard mask by subtracting each octate with 255
+                wildcard_mask=[]
+		for octate in mask_octate_decimal:
+			#print octate
+			wild_card=str(255-int(octate))
+			wildcard_mask.append(wild_card)
+         
+		wildcard_mask=".".join(wildcard_mask)
+
+                print "\n"
+		print("Wildcard Mask:"+ wildcard_mask)      
+		print("Hosts:"+ str(hosts))
+		print("Mask Value:/"+str(ones))
 
 	except SyntaxError:
 		print(" Systax Error Please correct")
