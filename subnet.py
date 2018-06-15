@@ -2,8 +2,13 @@
 ''' ********************************************************************
                                Subnet calculator
 
+Input : IP address,SubnetMask               OutPut: Network address
+						    Mask value
+						    Wildcard Mask
+						    Number of Hosts 
 
 
+Author:KARTHIK SIDDALINGAPPA
 ***********************************************************************'''
 import sys
 import re
