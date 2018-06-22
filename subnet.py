@@ -3,6 +3,7 @@
                                Subnet calculator
 
 Input : IP address,SubnetMask               OutPut: Network address
+						    Broadcast address
 						    Mask value
 						    Wildcard Mask
 						    Number of Hosts 
@@ -34,7 +35,7 @@ def subnet_calc():
 				print("\n The IP address is INVALID !! Please try again ")
                                 continue
 
-
+  
 
 		#Check for SubnetMask Validity
 		while True:
@@ -93,17 +94,61 @@ def subnet_calc():
          
 		wildcard_mask=".".join(wildcard_mask)
 
+
+                #Convert the Ip address into binary 
+                
+                ip_address_bin=[]
+		ip_address_octate=ip_address.split(".")
+		
+		for each_octate in ip_address_octate:
+			bin_octate=bin(int(each_octate)).split("b")[1]
+			ip_address_bin.append(bin_octate.zfill(8))
+               
+                binary_ip="".join(ip_address_bin)
+		
+               
+               
+                Network_address_binary = binary_ip[:(ones)]+ "0" * zeros
+                Broadcast_address_binary=binary_ip[:(ones)]+ "1" * zeros
+
+                Network_address=[]
+
+		for octate in range (0,len(Network_address_binary),8):
+			net_ip_octate=Network_address_binary[octate:octate+8]
+			Network_address.append(str(int(net_ip_octate,2)))
+                
+		Network_address=".".join(Network_address)
+		
+
+                Broadcast_address=[]
+
+		for octate in range (0,len(Broadcast_address_binary),8):
+			brd_ip_octate=Broadcast_address_binary[octate:octate+8]
+			Broadcast_address.append(str(int(brd_ip_octate,2)))
+
+		Broadcast_address=".".join(Broadcast_address)
+		
+
                 print "\n"
+		print("Network address:"+ Network_address)
+		print("Broadcast address:" +Broadcast_address) 
 		print("Wildcard Mask:"+ wildcard_mask)      
-		print("Hosts:"+ str(hosts))
+		print("Valid Hosts:"+ str(hosts))
 		print("Mask Value:/"+str(ones))
-
+		print "\n"
+       
+             
+         
 	except SyntaxError:
-		print(" Systax Error Please correct")
+		print(" Syntax Error Please correct")
 
 
 
-subnet_calc()
+
+
+
+if __name__ == "__main__":
+	subnet_calc()
 
 
 	 
