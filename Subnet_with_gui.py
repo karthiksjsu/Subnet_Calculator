@@ -64,11 +64,11 @@ def subnet_calc():
 			else:
 				print("\n The Subnet mask is INVALID !! Please try again")
 				L13.config(text="\n INVALID Subnet mask !! Try again")
-				L13.place(x=125,y=100)
+				L13.place(x=105,y=100)
 				flag2=1
                                 if(flag1==1 and flag2==1):
 					L13.config(text="INVALID IP address & Subnet mask !! Try again")
-					L13.place(x=80,y=110)
+					L13.place(x=70,y=110)
                           	break
 		
 
