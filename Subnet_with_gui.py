@@ -16,14 +16,6 @@ import re
 from Tkinter import *
 import tkMessageBox
 
-
-def on_change(self):
-	print "output"
-
-def change():
-	print "hereh"
-
-
 def subnet_calc():
 	
 	try:
@@ -279,10 +271,6 @@ if __name__ == "__main__":
 	L13.pack(side=TOP)
 	L13.place(x=130,y=100)
 	
-	
-	#Display on the screen  
-	E1.bind("<Return>",on_change)
-	E2.bind("<Return>",on_change)
 	
 	top.mainloop()
 	
