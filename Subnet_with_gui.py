@@ -25,7 +25,7 @@ def change():
 
 
 def subnet_calc():
-	global Network_address
+	
 	try:
 		print ("\n")
 		# Check for IP Validity
@@ -38,6 +38,7 @@ def subnet_calc():
 			matched=re.match(r'^(2[0-1][0-9]|1[0-13-9][0-9]|22[0-3]|[0-9]{0,2}|12[0-68-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[0-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[0-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[0-9]?[0-9])$',ip_address)
 		
 			L13.config(text="          ")
+			L13.place(x=125,y=100)
 
 			if(matched):
 				break
@@ -45,7 +46,9 @@ def subnet_calc():
 				#L13=Label(top,text="\n INVALID IP !! Try again ")
 				#L13.pack(side=TOP)
 				#L13.place(x=130,y=100)
+				flag1=1
 				L13.config(text="\n INVALID IP !! Try again")
+				L13.place(x=125,y=100)
 				print("\n The IP address is INVALID !! Please try again ")
                                 break
 
@@ -64,11 +67,19 @@ def subnet_calc():
 					break
 				else:
 					print("\n The Subnet mask is INVALID !! Please try again")
-					continue
+					L13.config(text="\n INVALID Subnet mask !! Try again")
+					break
 			else:
 				print("\n The Subnet mask is INVALID !! Please try again")
-                          	continue
-	
+				L13.config(text="\n INVALID Subnet mask !! Try again")
+				L13.place(x=125,y=100)
+				flag2=1
+                                if(flag1==1 and flag2==1):
+					L13.config(text="INVALID IP address & Subnet mask !! Try again")
+					L13.place(x=80,y=110)
+                          	break
+		
+
 		#Convert Mask to binary String
 		mask_octate_padded = []
                 #Splitting the Subnet mask into a list
